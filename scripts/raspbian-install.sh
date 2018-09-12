@@ -5,7 +5,7 @@ set -u
 trap "exit 1" TERM
 export TOP_PID=$$
 
-: "${WFC_REPO:=resin-io/resin-wifi-connect}"
+: "${WFC_REPO:=hveficent/resin-wifi-connect}"
 : "${WFC_INSTALL_ROOT:=/usr/local}"
 
 SCRIPT='raspbian-install.sh'
@@ -137,11 +137,13 @@ disable_dhcpcd() {
 }
 
 service_load_state() {
-    ensure systemctl -p LoadState --value show "$1"
+    # ensure systemctl -p LoadState --value show "$1"
+    printf 'ensure systemctl -p LoadState --value show "$1"'
 }
 
 service_active_state() {
-    ensure systemctl -p ActiveState --value show "$1"
+    # ensure systemctl -p ActiveState --value show "$1"
+    printf 'ensure systemctl -p ActiveState --value show "$1"'
 }
 
 confirm_installation() {
