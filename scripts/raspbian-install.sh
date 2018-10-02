@@ -88,7 +88,7 @@ activate_network_manager() {
 
         ensure sudo apt-get install -y -d network-manager
 
-        disable_dhcpcd
+        # disable_dhcpcd
 
         say 'Installing NetworkManager...'
 
@@ -103,13 +103,13 @@ activate_network_manager() {
         else
             confirm_installation
 
-            disable_dhcpcd
+            # disable_dhcpcd
 
             say 'Activating NetworkManager...'
 
-            ensure sudo systemctl enable NetworkManager
+            # ensure sudo systemctl enable NetworkManager
 
-            ensure sudo systemctl start NetworkManager
+            # ensure sudo systemctl start NetworkManager
         fi
     fi
 
@@ -122,9 +122,9 @@ disable_dhcpcd() {
     if [ "$(service_active_state dhcpcd)" = "active" ]; then
         say 'Deactivating and disabling dhcpcd...'
 
-        ensure sudo systemctl stop dhcpcd
+        # ensure sudo systemctl stop dhcpcd
 
-        ensure sudo systemctl disable dhcpcd
+        # ensure sudo systemctl disable dhcpcd
 
         if [ "$(service_active_state dhcpcd)" = "active" ]; then
             err 'Cannot deactivate dhcpcd'
